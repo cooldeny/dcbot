@@ -1,0 +1,55 @@
+import random
+import discord
+
+# Переменная intents - хранит привилегии бота
+intents = discord.Intents.default()
+# Включаем привелегию на чтение сообщений
+intents.message_content = True
+# Создаем бота в переменной client и передаем все привелегии
+client = discord.Client(intents=intents)
+allcodes = '$random - орёл и решка (монетка)' , 
+             '$smail.r - рамдомный смайлик'
+             
+            
+@client.event
+async def on_ready():
+    print(f'We have logged in as {client.user}')
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    if message.content.startswith('$random'):
+        a = random.randint(1,2)
+        if a == 1:
+            await message.channel.send('орёл')
+        if a == 2:
+            await message.channel.send('решка')
+            
+            
+        
+    elif message.content.startswith('$smail.r'):
+        b = random.randint(1,5)
+        if b == 1:
+            await message.channel.send("☺  ☻  ☹")
+        if b == 2:
+            await message.channel.send('シ ツ')
+        if b == 3:
+            await message.channel.send('ʕʘ‿ಠʔ')
+        if b == 4:                         
+            await message.channel.send('◔◡‿◡◔   ⊙_ರೃ   (͡๏̯͡๏)  ')
+        if b == 5:
+            await message.channel.send('посмотрив гугле линивый болбес')
+                        
+            
+    elif message.content.startswith('$help'):
+        await message.channel.send(allcodes)
+    
+        
+        
+        
+    
+
+client.run("MTExMDEzMTA5MDM4MDgyNDYzNw.GjwbJi.-5iXsilVJTKy5h35l2Wj0i6F8iMLg3_-6CVYcw")
+
+
